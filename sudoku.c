@@ -88,9 +88,8 @@ List* get_adj_nodes(Node* n){
     if (fila == -1) {
        return list;
    }
-    // Generar nodos adyacentes cambiando el valor de la casilla vacía por números del 1 al 9
     for (int num = 1; num <= 9; num++) {
-        // Crear una copia del nodo original
+        
         Node* adjacent_node = copy(n);
         adjacent_node->sudo[fila][col] = num;
         
@@ -119,7 +118,8 @@ int is_final(Node* n){
 }
 
 Node* DFS(Node* initial, int* cont){
-  return NULL;
+   
+   return NULL;
 }
 
 
