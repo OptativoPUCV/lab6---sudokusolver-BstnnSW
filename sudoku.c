@@ -91,16 +91,13 @@ List* get_adj_nodes(Node* n){
     // Generar nodos adyacentes cambiando el valor de la casilla vacía por números del 1 al 9
     for (int num = 1; num <= 9; num++) {
         // Crear una copia del nodo original
-        Node* adj_node = copy(n);
-        // Asignar el número válido a la casilla vacía
-        adj_node->sudo[fila][col] = num;
-        // Verificar si el nodo adyacente es válido
-        if(is_valid(adj_node)){
-            // Agregar el nodo adyacente a la lista solo si es válido
-           pushBack(list, adj_node);
+        Node* adjacent_node = copy(n);
+        adjacent_node->sudo[fila][col] = num;
+        
+        if (is_valid(adjacent_node)) {
+           pushBack(list, adjacent_node);
         } else {
-            // Liberar memoria si el nodo no es válido
-            free(adj_node);
+           free(adjacent_node);
         }
     }
 
