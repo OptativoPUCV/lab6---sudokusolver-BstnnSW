@@ -45,20 +45,20 @@ void print_node(Node* n){
 
 int is_valid(Node* n){
    int i, k;
-   int row_check[9][10] = {0}; 
-   int col_check[9][10] = {0}; 
+   int filas_check[9][10] = {0}; 
+   int cols_check[9][10] = {0}; 
    int subgrid_check[9][10] = {0}; 
 
    for(i = 0; i < 9; i++){
       for(k = 0; k < 9; k++){
          int num = n->sudo[i][k];
          if(num == 0) continue; 
-         if(row_check[i][num] || col_check[k][num] || subgrid_check[(i / 3) * 3 + (k / 3)][num]){
+         if(filas_check[i][num] || cols_check[k][num] || subgrid_check[(i / 3) * 3 + (k / 3)][num]){
             return 0; 
          }
                
-         row_check[i][num] = 1;
-         col_check[k][num] = 1;
+         filas_check[i][num] = 1;
+         cols_check[k][num] = 1;
          subgrid_check[(i / 3) * 3 + (k / 3)][num] = 1;
          }
       }
@@ -75,7 +75,15 @@ List* get_adj_nodes(Node* n){
 
 
 int is_final(Node* n){
-    return 0;
+   for(int i = 0; i < 9; i++){
+      for (int k = 0; k < 9; k++){
+         if(n->sudo[i][k] == 0){
+            return 0; 
+         }
+      }
+   }
+   return 1; 
+   return 0;
 }
 
 Node* DFS(Node* initial, int* cont){
